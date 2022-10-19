@@ -10,3 +10,10 @@ def load_image(path):
             temp.append([red, green, blue])
         image.append(temp)
     return image
+
+def convert_image(img):
+    np_img = np.array(img)
+    gray = np_img[:,:,0] * 0.299 + np_img[:,:,1] * 0.587 + np_img[:,:,2] * 0.114
+    img_normed = (gray - np.min(gray)) / (np.max(gray) - np.min(gray))
+
+    return img_normed
