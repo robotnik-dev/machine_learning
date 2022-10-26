@@ -31,11 +31,22 @@ def show_images(grid_size: int, path_to_images: str) -> None:
     figure.set_figwidth(20)
     for idx in range(grid_size * grid_size):
         random_idx = np.random.randint(low=0, high=len(images))
-        image_to_load = images[random_idx][0]
+        img = images[random_idx][0]
         label = images[random_idx][1]
-        image_to_show = load_image(image_to_load)
+        img = load_image(img)
+        image_to_show = convert_image(img)
         axes = figure.add_subplot(columns, rows, idx + 1, )
-        axes.imshow(image_to_show)
+        axes.imshow(image_to_show, cmap="gray")
         axes.set_title(label=label)
         axes.axis('off')
     plt.show()
+
+
+class ImageDataset:
+    def __init__(self, base_path: str) -> None:
+        self.base_path = base_path
+    
+    def get_img_paths(self):
+        img_paths = [[(img_path, label) for img_path in os.listdir(self.base_path+label)]
+                     for label in os.listdir(self.base_path)]
+        return img_paths

@@ -35,20 +35,20 @@ messen ...
 - Unmögliches Ereigniss P = 0
 - Summe aller Wahrscheinlichkeiten = 1
 - Additionstheorem  
-p(x ODER y) = p(x) + p(y) - p(x UND y) -> **p(x,y)**
-- ODER -> (p(x ODER y)) = **p(x UND y) = 0**
-- NICHT -> p(NICHT x) = 1 - p(x)
+$$p(x \lor y) = p(x) + p(y) - p(x \land y) => p(x,y)$$
+ODER
+$$p(x \lor y) = p(x \land y) = 0$$
+$$p(\lnot x) = 1 - p(x)$$
 - Produktregel  
 wahrscheinlichkeit x unter Bedingung, dass yi eingetreten ist  (Wahrscheinlichkeitbaum)  
-p(x, yi) = p(x | y) * p(yi) = p(yi | x) * p(x)
+$$p(x, yi) = p(x | y) * p(yi) = p(yi | x) * p(x)$$
 - Bayes Rule  
-**p(x|y) = p(y|x) * p(x) / p(y)**  
+$$p(x | y) =\frac{p(x | y) * p(x)}{p(y)}$$
 p(x|y) -> posterior  
 p(y|x) -> Likelyhood (Messung)  
 p(x) -> prior  
 p(y) -> Evidence (Normierung)  
-
 ![](images/bayesrule.png)
 - Satz der totalen Wahrscheinlichkeit  
 gesamt wahrscheinlichkeit ist die Summer aller vorherigen Wahrscheinlichkeiten (bsp. Lokalisierung )  
-**p(x) = Sum(p(x,yi)) = Sum(p(x|yi) * p(yi))**
+$$p(x) = \sum(p(x,yi)) = \sum(p(x|yi) * p(yi))$$
