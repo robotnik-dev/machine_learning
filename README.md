@@ -140,4 +140,67 @@ Liste aus allen benachbarten Kanten eines Knotens
 
 
 Dijkstra und A* Algortihmen
-- ln(gewicht) nehmen wenn die Kosten Wahrscheinlichkeiten sind
+Anmerkung: ln(gewicht) nehmen wenn die Kosten Wahrscheinlichkeiten sind
+
+# Vorlesung 2.11.22
+## Themen
+- Log Odds
+- Grid Maps
+- Bayes Filter
+- Gauß Filter
+
+# Vorlesung 9.11.22
+## Partikel Filter(Localization)
+particles = {(vec x_i, w_i)} - i= 1..N  
+p_i = sum_i(w_i*delta_xi(x))  
+## Sampling
+Gleichverteilung bei Diskreten Werten
+formal: x = 1/12 * sum(uniform(1,100)) -> N = 12  
+
+## Resampling
+Beudetung: Dort wo die Hypothese im Correction step gut war(höheres Gewicht) Werden mehr Partikel genommen
+
+## Herangehensweise
+1. messung
+2. bewerten von Partikeln
+3. neue Partikel setzen
+
+- correction step
+1. got measurement: z
+2. evaluate particles(pi)-> calculate: weight(wi) Plausibilität des Particles überprüfen
+3. resampling: set new particles(pi)
+- prediction step
+1. move particles(pi)  
+p(x_t|x_t-1)  
+x_t = x_t + u_t + n; n = rauschen(noise)  
+
+## Roulette wheel Sampling (resampling)
+1. create p1 with x1 (+ noise)  
+zufällig
+sinnvoll beim kidnapped robot problem
+## Stochastic Universal Sampling(resampling)
+statistisches resampling -> weniger RNG  
+Im gleichen Abstand wieder gewählt
+
+## Rao-Blackwellisation
+p(a,b) = p(a) * p(b|a) -> p(x,m) = p(x) * p(m|x)  
+x: Zustand, m: Karte  
+Bayes rule kann angewandt werden um p(a) unabghängig von p(b|a) zu berechnen -> schnellere Berechnung  
+fast SLAM: jeder Partikel führt seine eigene Karte mit sich(landmarks, gridmap)  
+
+# Vision
+## Computer Vision
+data-> features -> result (classification, text, caption)  
+
+## AI approach
+data -> result
+
+## Features
+Keypoints(corner detection)  
+codieren als vector (SIFT - Feature)  
+Bild besteht aus der Vereinigungsmenge aller Vektoren  
+
+## k-means / binarisieren
+Cluster center finden. k muss am anfang festgelegt werden.  
+gut für das binarisieren (k=2) 0 und 255  
+gefundene cluster center benutzen als threshold für das binarisieren
