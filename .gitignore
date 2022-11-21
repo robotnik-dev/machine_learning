@@ -1,6 +1,7 @@
 /.vscode
 /.venv
 
-/__pycache__
 /.ipynb*
 /src/.ipynb*
+
+*__pycache__
