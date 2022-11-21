@@ -51,9 +51,6 @@ def gaussian(a):
     a = np.apply_along_axis(lambda x: np.convolve(x, kernel, mode='same'), 1, a)
     return a/norm
 
-def shake(img):
-    pass
-
 def main():
     train_path = "./data/MYON/train/"
     train_dataset = ImageDataset(train_path, transform=gaussian)
